@@ -1,0 +1,16 @@
+.env
+.env.*
+!.env.example
+*api_key*
+*credentials*
+*.pem
+*.key
+outputs/
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.DS_Store
+.ipynb_checkpoints/

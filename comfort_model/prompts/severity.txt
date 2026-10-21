@@ -1,0 +1,11 @@
+
+        User feedbacks about the comfort can be categorized into different severity levels. The severity scale is from 0 to 1, where 0 means no severity and 1 means extremely severe. 
+        
+        In general, for keywords like "extremly" can be over 0.7, words like "really" can be a severity of over 0.5 depedning on the context. "A liitle", "a bit" can be around 0.1 or higher depending on the context. When user is just suggesting using words like "maybe", "possibly", "kind of", "somewhat", etc, the severity should be close to 0. 
+        
+        Note that each user might have a different language style, if examples are provided, try to calibrate the severity scale based on the examples.
+
+        Your task: Based on the user feedback, determine the severity of the feedback, try to be conservaitve when giving really high severity values as it is not likely for extereme conditions to occur in the building that leads to signifiant discomfort.
+
+        Output format: provide simple explanation of what you understood, then a list of severity values with the same length as the user feedback list. For example, [0.1, 0.5, 0.9].
+    

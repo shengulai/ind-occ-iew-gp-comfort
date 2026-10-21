@@ -1,0 +1,8 @@
+# Tested numerical validation environment: Python 3.11.
+numpy==1.26.4
+torch==2.2.2
+gpytorch==1.15.2
+matplotlib==3.10.8
+scipy==1.17.1
+pandas==2.3.3
+# For new natural-language interpretation: pip install '.[llm]'

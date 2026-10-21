@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "iew-comfort-model"
+version = "0.1.0"
+description = "Individual comfort modeling with an IEW mean and residual Gaussian process"
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+dependencies = ["numpy==1.26.4", "torch==2.2.2", "gpytorch==1.15.2"]
+
+[project.optional-dependencies]
+llm = ["openai==2.31.0"]
+validation = ["matplotlib==3.10.8", "scipy==1.17.1", "pandas==2.3.3"]
+
+[tool.setuptools.packages.find]
+include = ["comfort_model*"]
+
+[tool.setuptools.package-data]
+comfort_model = ["prompts/*.txt", "prompts/*.md"]
