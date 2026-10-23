@@ -13,6 +13,7 @@ dependencies = ["numpy==1.26.4", "torch==2.2.2", "gpytorch==1.15.2"]
 [project.optional-dependencies]
 llm = ["openai==2.31.0"]
 validation = ["matplotlib==3.10.8", "scipy==1.17.1", "pandas==2.3.3"]
+pmv = ["pythermalcomfort==4.6.2", "numba==0.61.2", "llvmlite==0.44.0", "scipy==1.17.1"]
 
 [tool.setuptools.packages.find]
 include = ["comfort_model*"]

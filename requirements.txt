@@ -6,3 +6,4 @@ matplotlib==3.10.8
 scipy==1.17.1
 pandas==2.3.3
 # For new natural-language interpretation: pip install '.[llm]'
+# For fresh PMV reference generation/fitting: pip install '.[pmv]'

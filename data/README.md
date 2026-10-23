@@ -82,6 +82,7 @@ requires an explicit `skip` policy when missing reporting-hour inputs occur.
 | Reference comparison | Stored evaluation grid and residual realization are shared across models within each persona; residual seed 0. |
 | Temporal simulations | Ten seeds (0–9), stable/gradual/abrupt scenarios, 720 days. The same simulated sequence is paired across forgetting settings. |
 | Severe-error simulations | Ten seeds (0–9), stable latent preference. The first three reported scores in days 300–359 are replaced by the opposite endpoint (0 or 1). |
+| PMV sensitivity experiment | Same analysis temperatures and timestamps, deterministic PMV-derived numerical targets, one temperature-only fit per persona, seed 0. No language calls or added score noise. |
 
 The original persona generator draws IEW + a GP residual sample + independent
 Gaussian observation noise, then clips the sampled score to [0, 1]. The historical
@@ -96,6 +97,16 @@ optimizer steps per fit, learning rate 0.001, and forgetting half-lives 50, 100,
 code explicitly initializes the global noise after constraint registration;
 the original persona fitting code preserves its earlier initialization order.
 This difference is retained rather than silently changing the paper experiments.
+
+## PMV reference experiment
+
+`pmv/` contains the temperature-only experiment's training pairs, fitted
+checkpoints, evaluation arrays, numerical settings and MAE/RMSE/NLPD comparison.
+The 60 Adam, 23 Bill and 8 Eve observations use the temperatures and timestamps
+in `personas/*_training.csv`. All targets are recalculated using PMV/PPD,
+including Adam observation 40; the historical LLM-score correction does not
+replace a PMV target. CO2 is omitted. See [pmv/README.md](pmv/README.md) for the
+protocol and [pmv/comparison.md](pmv/comparison.md) for the results.
 
 ## Metrics
 

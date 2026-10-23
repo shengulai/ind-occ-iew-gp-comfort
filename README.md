@@ -122,7 +122,9 @@ python -m experiments.reproduce figures --output outputs/figures
 
 The first regenerates Table 1 (CSV and LaTeX) and the score-source comparison
 (CSV), checks the saved model predictions, and regenerates the 30 temporal and
-10 severe-error simulation input sequences. The second renders persona
+10 severe-error simulation input sequences. It also verifies the saved PMV
+experiment and writes its MAE, RMSE and NLPD table under `outputs/metrics/pmv/`.
+The second renders persona
 comparisons, learning/bound updates, uncertainty diagnostics, temporal-adaptation
 results, and the severe-error experiment. Outputs go into a new/empty folder.
 
@@ -139,6 +141,38 @@ sampled-numerical-score IEW + GP comparison. Temporal and severe-error experimen
 use seeds 0–9. They can take substantial time. Add `--quick` for a short execution
 check, or `--seeds 0` to run a single temporal/adversarial seed. Quick results are
 not the paper's results. Full settings are in `experiments/settings.py`.
+
+### Temperature-only PMV experiment
+
+This sensitivity test uses a PMV/PPD-derived reference instead of IEW-derived
+comfort. It retains Adam, Bill and Eve's analysis temperatures and timestamps,
+recalculates numerical comfort scores, and compares the initial and learned
+temperature-only IEW + GP. It does not generate or interpret language.
+
+Verify the archived models and results without retraining or additional PMV
+dependencies:
+
+```bash
+python -m experiments.test_pmv --verify --output outputs/pmv_check
+```
+
+To calculate fresh PMV scores and train all three models:
+
+```bash
+python -m pip install -e '.[pmv]'
+python -m experiments.test_pmv --output outputs/pmv_refit
+```
+
+The default run uses 2,000 training steps per persona. Each run writes training
+pairs, model checkpoints, evaluation arrays, settings, and a comparison table
+in CSV and Markdown. `--steps 20` is available for a short execution check;
+it does not reproduce the reported training budget. Use a new/empty output folder.
+
+See [data/pmv/README.md](data/pmv/README.md) for the reference assumptions,
+normalization, software citation, and
+[archived results](data/pmv/comparison.md). Adam and Eve improved in MAE and RMSE;
+Bill's MAE changed little and RMSE increased. NLPD decreased for all three.
+These are fixed synthetic scenarios, not independent real-occupant validation.
 
 For a **new synthetic language dataset** (calls GPT-4o):
 
@@ -174,7 +208,9 @@ python -m unittest discover -s tests -v
 Packaging checks exercised the offline example, model save/load/update, mocked
 API interpretation, saved-result verification, figure generation, and quick
 refits. Fresh paid API calls and all full-length training runs were not repeated
-as part of packaging. On macOS systems with an OpenMP shared-memory error, prefix
+as part of the initial packaging. The PMV addition was checked through offline
+verification and a fresh full-length fit of all three personas. On macOS systems
+with an OpenMP shared-memory error, prefix
 commands with `KMP_USE_SHM=0 OMP_NUM_THREADS=1`.
 
 ## Release information

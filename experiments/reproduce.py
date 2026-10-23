@@ -88,6 +88,8 @@ def verify(out):
         for key in ('X','latent','unmodified','corrupted','mask','attack_days','target'):
             np.testing.assert_array_equal(run[key],saved[key])
     print('All 30 temporal and 10 severe-error simulation inputs reproduce exactly.')
+    from .test_pmv import verify_saved
+    verify_saved(out/'pmv')
 
 
 def scatter_figures(out):

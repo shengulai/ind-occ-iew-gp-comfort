@@ -1,5 +1,16 @@
 """Numerical settings for the archived paper experiments; no machine paths."""
 PERSONAS = ("Adam", "Bill", "Eve")
+PMV = {
+    'package_version': '4.6.2',
+    'reference_options': dict(vr=0.1, rh=50.0, met=1.1, wme=0.0,
+                              model='7730-2025', units='SI', round_output=False),
+    'clothing_bounds': (0.3, 1.5),
+    'temperature_range_F': (66.0, 80.0),
+    'grid_size': 501,
+    'training': dict(steps=2000, learning_rate=0.001, tau=120.0,
+                     base_variance=0.005, history_variance=0.15, seed=0),
+}
+
 INITIAL = {'Adam': {'weights_initial': {'temp': 1, 'co2': 1},
           'wellness_range_initial': {'temp': [71, 77, 60, 85],
                                      'co2': [0, 900, 0, 1800]},
