@@ -9,9 +9,9 @@ synthetic example feedback, and the data/functions used for the paper's
 simulation validations. The experiments are a methodological proof of concept;
 the language scores have not been independently validated with real occupants.
 
-## Publication status
+## Publication
 
-The accompanying manuscript is currently under peer review. The code and
+The accompanying manuscript [A Gaussian Process-based method for interactive individual occupant comfort modeling](https://doi.org/10.1016/j.buildenv.2026.115607)is published on Building and Environment. The code and
 supporting simulation data are publicly available to support reproducibility,
 review, and further methodological development. Public availability of this
 repository does not imply that the manuscript has been accepted or that the
@@ -21,6 +21,18 @@ When referencing or reproducing the revised manuscript's results, record the
 exact Git commit or tagged release used. This identifies the relevant code and
 data as the repository continues to evolve. The final publication citation will
 be added when available.
+
+To cite the paper, include the following bibtext:
+```
+@article{shen2026gaussian,
+  title={A Gaussian process-based method for interactive individual occupant comfort modeling},
+  author={Shen, Gulai and Malkawi, Ali and Li, Na},
+  journal={Building and Environment},
+  pages={115607},
+  year={2026},
+  publisher={Elsevier}
+}
+```
 
 ## Install
 
