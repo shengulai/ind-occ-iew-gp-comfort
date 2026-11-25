@@ -224,9 +224,3 @@ as part of the initial packaging. The PMV addition was checked through offline
 verification and a fresh full-length fit of all three personas. On macOS systems
 with an OpenMP shared-memory error, prefix
 commands with `KMP_USE_SHM=0 OMP_NUM_THREADS=1`.
-
-## Release information
-
-The code/data license remains to be specified by the authors. The final
-publication citation is pending publication; until then, describe the
-accompanying manuscript as under review.
